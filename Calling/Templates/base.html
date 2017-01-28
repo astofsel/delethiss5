@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html >
+  <head>
+    
+    {% load staticfiles %}
+    <link rel='stylesheet' type='text/css' href='{% static 'bootstrap.min.css' %}'>
+    <link rel='stylesheet' type='text/css' href='{% static 'style.css' %}'>    
+    <link rel='stylesheet' type='text/css' href='{% static 'xeditable.css' %}'>  
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href= '{% static 'bower_components/angular-material/angular-material.css' %}'>
+    <link rel="stylesheet" href= '{% static 'bower_components/angular-material/angular-material.min.css' %}'>
+      
+    <script src= '{% static 'js/angular.js' %}'> </script> 
+    <script src= '{% static 'js/ui-router.js' %}'> </script> 
+    <script src= '{% static 'js/angular-Route.js' %}'> </script>
+    <script src= '{% static 'js/angular-animate.js' %}'> </script> 
+    <script src= '{% static 'js/xeditable.js' %}'> </script> 
+    <script src='{% static 'js/app.js' %}'> </script>
+    <script src= '{% static 'js/angular-messages.js' %}'> </script>
+    <script src='{% static 'bower_components/angular-aria/angular-aria.js' %}'></script>
+    <script src='{% static 'bower_components/angular-material/angular-material.js' %}'></script>
+    <script src='{% static 'js/svg-assets-cache.js' %}'></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>     -->
+
+  </head>
+
+  <body>
+
+{% block content %}
+{% endblock %}
+
+  </body>
+
+</html>

@@ -1,0 +1,98 @@
+<div ng-controller='listCtrl as addCtrl'> 
+	<div class='ListCompanies'>
+		<h3> Account List </h3> </br>
+		<div class='panel panel-default' style="width: 480px;">
+			<table class='table'> 
+			<tr> <th> # </th> <th> Company Name </th> <th> Contact Name </th> <th> Next Follow Up </th> <th> Delete </th> <th> Notes </th> </tr> 
+				<tr id='table' ng-class="{fadeIn: company.CompanyName === addCtrl.lastCreated.CompanyName}" ng-repeat='company in addCtrl.items | orderBy: "CompanyName" | filter: searchKeyword'> 
+					<span>
+						<td > <span ng-bind=$index+1></span> </td> 
+						<td > <span ng-bind='company.CompanyName'></span> </td>
+						<td > <span ng-bind='company.ContactName'> </span> </td>	
+						<td > <span >{%verbatim%}{{ company.Next_FU | date: 'HH:mm, dd MMM'}} {%endverbatim%} </span> </td>	
+					</span> 
+						<td> <md-button class='md-raised md-warn' ng-click='addCtrl.deleteCompany(company)' >Delete</md-button> </td> 
+
+						
+						<!-- THIS IS WHERE THE MODAL HAS TO POP UP -->
+						<td> <md-button class="md-primary md-raised edgePadding" id='ViewButton' ng-click="openModal(company)"> View </md-button> </td> 
+
+
+
+				</tr> 				
+			</table> 				
+		</div> 			
+	</div>
+
+	<div class='InputDiv'> 			
+		<h3> Add Company Below </h3> 
+		<form class='input-group' name='addCompany'
+			ng-submit='addCtrl.add()'>
+			<span style='font-weight:bold'>Company Name: </span> 
+			 <input type='text' class='form-control' ng-model='addCtrl.newCompany.CompanyName' required> </br> 
+			<span style='font-weight:bold'>Contact Name: </span> 
+			 <input type='text' class='form-control' ng-model='addCtrl.newCompany.ContactName' required> </br> 
+			 <span style='font-weight:bold'>Next FU: </span> 
+			 <input type='text' class='form-control' ng-model='addCtrl.newCompany.Next_FU'> </br>
+			<input id='button' class="btn btn-primary" type='submit' value='Add Company'> 				
+		</form> 			
+		<div class='SearchBox'> 
+			<span style='font-weight:bold'>Search</span> 
+			<span> 			
+			<input type='text' id='button' class='form-control ng-valid ng-dirty' ng-model='searchKeyword' value='Search'> 
+			</span> 
+			</br> 
+			<div> 			
+				<md-button class="md-primary md-raised edgePadding" go-click="nextcall" ng-click='show = 1'> Go to Next Task </md-button>	
+			</div> 
+		</div> 
+	</div>
+
+
+
+
+
+
+
+<!-- Below is the modal code, hidden until prompted -->
+<script type="text/ng-template" id="dialog.tmpl.html">
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2><span ng-bind='company'></span></h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2><span ng-model='company'></h2>
+        <p>
+          This is where text goes.
+        </p>
+        </p>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">
+       Close
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+</script>
+
+
+
+
+
+
+
+</div>
+

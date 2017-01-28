@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load staticfiles %} 
+{% block content %}
+
+
+<div ng-app='addCompany'> 
+	<div> 
+		<nav class="navbar navbar-default">
+			<div class="navbar-header">
+			      		<a class="navbar-brand">Selling Buddy</a>
+		    		</div>
+	  		<div class="container-fluid">
+	  			<div id="navbar" class="navbar-collapse collapse">
+            		<ul class="nav navbar-nav" >
+	              		<li ng-class="{'active': $route.current.activetab == '#'}"><a href="#">Home</a></li>
+	              		<li ng-class="{'active': $route.current.activetab == 'nextcall'}"><a href="#nextcall">Next Task</a></li>
+	              		<li ng-class="{'active': $route.current.activetab == 'SelectCallAccount'}"><a href="#SelectCallAccount">Account List</a></li>	              		
+	              		<li ng-class="{'active': $route.current.activetab == '#'}"><a href="#">Analytics</a></li>
+	              		<li ng-class="{'active': $route.current.activetab == '#'}"><a href="#">My Account</a></li>
+	              	</ul> 
+		    	</div> 
+	    	</div> 
+		</nav>
+
+		<div class='MainDiv'>
+			
+			<div ng-view></div> 
+
+		</div>
+
+	</div> 
+</div>	
+
+{% endblock %}
